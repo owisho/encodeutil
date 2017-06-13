@@ -68,6 +68,9 @@ public class MD5Encoder {
 		final StringBuilder buf = new StringBuilder(bytes.length * 2);
 
 		for (int j = 0; j < bytes.length; j++) {
+			//对byte值进行运算，如果byte值小于16则进行高位补0
+			//1byte = 8bit 0000 0000 
+			//如果byte的值小于16（1111）也就是说byte只有4位时，则需要进行高位的补0处理
 			buf.append(HEX_DIGITS[(bytes[j] >> HEX_RIGHT_SHIFT_COEFFICIENT) & HEX_HIGH_BITS_BITWISE_FLAG]);
 			buf.append(HEX_DIGITS[bytes[j] & HEX_HIGH_BITS_BITWISE_FLAG]);
 		}
